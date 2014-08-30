@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1= title
+  #todoList
+    ul
+      each todo, index in todos
+        li= todo.description
+          | 
+          a(href='#', class='linkdeletetodo', rel=todo._id.toString()) [delete]
+  #insertToDo
+    div
+      form(action='/todos/insert',method='post')
+        label(for='todoDescription') ToDo: 
+        input(id='todoDescription', type='text', value='', placeholder='', name='description')      
+        input(type='submit', value='Add')
